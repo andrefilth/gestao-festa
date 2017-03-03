@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<title>Lista de Convidados</title>
+
+<link th:href="@{/webjars/bootstrap/3.3.6/css//bootstrap.min.css}"
+	rel="stylesheet" />
+
+<link th:href="@{/webjars/bootstrap/3.3.6/css//bootstrap-theme.min.css}"
+	rel="stylesheet" />
+
+</head>
+<body>
+<f:view contentType="text/html" />
+	<div class="panel panel-default" style= "margin: 50px;margin-right: 200px;margin-left: 200px" >
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de convidados</h1>
+		</div>
+		<div class="panel-body">
+			<form class="form-inline" method="POST" th:object="${convidado}"
+				th:action="@{/convidados}" style="margin: 20px">
+				<div class="form-goup">
+					<input type="text" class="form-control" placeholder="Nome"
+						th:fileld="*{nome}" /> <input type="text" class="form-control"
+						placeholder="Acompanhantes" th:fileld="*{quantidadeAcompanhantes}" />
+					<button type="submit" class="btn btm-primary">Adicionar</button>
+
+				</div>
+
+			</form>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Acompanhantes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="convidado : ${convidados}">
+						<td th:text="${convidado.nome}"></td>
+						<td th:text="${convidado.quantidadeAcompanhantes}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="panel-heading">
+			<h1 class="panel-title">Locadora</h1>
+		</div>
+	</div>
+</body>
+</html>
